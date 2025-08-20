@@ -1,15 +1,6 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
-/// Thanks for downloading my projectile gun script! :D
-/// Feel free to use it in any project you like!
-/// 
-/// The code is fully commented but if you still have any questions
-/// don't hesitate to write a yt comment
-/// or use the #coding-problems channel of my discord server
-/// 
-/// Dave
 public class ProjectileGunTutorial : MonoBehaviour
 {
     //bullet 
@@ -32,9 +23,10 @@ public class ProjectileGunTutorial : MonoBehaviour
     //bools
     bool shooting, readyToShoot, reloading;
 
-    //Reference
+    //References
+    // Keep the camera serialized for VR rigs/prefabs, but we won't use it for aiming.
     public Camera fpsCam;
-    public Transform attackPoint;
+    public Transform attackPoint; // muzzle/barrel tip
 
     //Graphics
     public GameObject muzzleFlash;
@@ -58,15 +50,16 @@ public class ProjectileGunTutorial : MonoBehaviour
         if (ammunitionDisplay != null)
             ammunitionDisplay.SetText(bulletsLeft / bulletsPerTap + " / " + magazineSize / bulletsPerTap);
     }
+
     private void MyInput()
     {
         // New Input System (VR Right Controller)
         var triggerButton = UnityEngine.InputSystem.InputSystem.FindControl("<XRController>{RightHand}/triggerPressed") as UnityEngine.InputSystem.Controls.ButtonControl;
-        var triggerAxis = UnityEngine.InputSystem.InputSystem.FindControl("<XRController>{RightHand}/trigger") as UnityEngine.InputSystem.Controls.AxisControl;
-        var reloadButton = UnityEngine.InputSystem.InputSystem.FindControl("<XRController>{RightHand}/primaryButton") as UnityEngine.InputSystem.Controls.ButtonControl;
+        var triggerAxis   = UnityEngine.InputSystem.InputSystem.FindControl("<XRController>{RightHand}/trigger")         as UnityEngine.InputSystem.Controls.AxisControl;
+        var reloadButton  = UnityEngine.InputSystem.InputSystem.FindControl("<XRController>{RightHand}/primaryButton")   as UnityEngine.InputSystem.Controls.ButtonControl;
 
         bool triggerHeld = (triggerButton != null && triggerButton.isPressed) ||
-                           (triggerAxis != null && triggerAxis.ReadValue() >= 0.5f);
+                           (triggerAxis   != null && triggerAxis.ReadValue() >= 0.5f);
 
         // Check if allowed to hold down button and take corresponding input
         if (allowButtonHold) shooting = triggerHeld;
@@ -83,49 +76,36 @@ public class ProjectileGunTutorial : MonoBehaviour
         {
             // Set bullets shot to 0
             bulletsShot = 0;
-
             Shoot();
         }
     }
-
 
     private void Shoot()
     {
         readyToShoot = false;
 
-        //Find the exact hit position using a raycast
-        Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Just a ray through the middle of your current view
-        RaycastHit hit;
+        // === Aim strictly along the gun's orientation ===
+        Vector3 forward = attackPoint.forward; // local Z in world space
+        Vector3 right   = attackPoint.right;
+        Vector3 up      = attackPoint.up;
 
-        //check if ray hits something
-        Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit))
-            targetPoint = hit.point;
-        else
-            targetPoint = ray.GetPoint(75); //Just a point far away from the player
-
-        //Calculate direction from attackPoint to targetPoint
-        Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
-
-        //Calculate spread
+        // Spread (in the plane perpendicular to forward)
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
-
-        //Calculate new direction with spread
-        Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0); //Just add spread to last direction
+        Vector3 directionWithSpread = (forward + right * x + up * y).normalized;
 
         //Instantiate bullet/projectile
-        GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity); //store instantiated bullet in currentBullet
-        //Rotate bullet to shoot direction
-        currentBullet.transform.forward = directionWithSpread.normalized;
+        Quaternion bulletRotation = Quaternion.LookRotation(directionWithSpread, up);
+        GameObject currentBullet = Instantiate(bullet, attackPoint.position, bulletRotation);
 
         //Add forces to bullet
-        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
-        currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
+        Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
+        rb.AddForce(directionWithSpread * shootForce, ForceMode.Impulse);
+        rb.AddForce(up * upwardForce, ForceMode.Impulse); // use gun's up, not camera
 
         //Instantiate muzzle flash, if you have one
         if (muzzleFlash != null)
-            Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+            Instantiate(muzzleFlash, attackPoint.position, attackPoint.rotation);
 
         bulletsLeft--;
         bulletsShot++;
@@ -137,13 +117,14 @@ public class ProjectileGunTutorial : MonoBehaviour
             allowInvoke = false;
 
             //Add recoil to player (should only be called once)
-            playerRb.AddForce(-directionWithSpread.normalized * recoilForce, ForceMode.Impulse);
+            playerRb.AddForce(-directionWithSpread * recoilForce, ForceMode.Impulse);
         }
 
         //if more than one bulletsPerTap make sure to repeat shoot function
         if (bulletsShot < bulletsPerTap && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
     }
+
     private void ResetShot()
     {
         //Allow shooting and invoking again
@@ -156,6 +137,7 @@ public class ProjectileGunTutorial : MonoBehaviour
         reloading = true;
         Invoke("ReloadFinished", reloadTime); //Invoke ReloadFinished function with your reloadTime as delay
     }
+
     private void ReloadFinished()
     {
         //Fill magazine
