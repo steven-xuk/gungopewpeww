@@ -28,7 +28,7 @@ public class BulletCleanup : MonoBehaviour
             Instantiate(impactVFX, contact.point, Quaternion.LookRotation(contact.normal));
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject, 0.25f);
     }
 
     // If your bullet uses a trigger collider instead of a solid collider,
@@ -41,6 +41,6 @@ public class BulletCleanup : MonoBehaviour
         if (impactVFX != null)
             Instantiate(impactVFX, transform.position, transform.rotation);
 
-        Destroy(gameObject);
+        Destroy(gameObject, 0.25f);
     }
 }
