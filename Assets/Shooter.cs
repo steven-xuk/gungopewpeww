@@ -39,7 +39,6 @@ public class Shooter : MonoBehaviour
             Debug.Log(hitInfo.collider.gameObject.name);
             ExplodeNonAlloc(hitInfo.point);
             Instantiate(hitEffect, hitInfo.point, hitEffect.transform.rotation);
-            Destroy(hitEffect, 5);
         }
         Invoke("EnableShooting", 0.5f);
     }
