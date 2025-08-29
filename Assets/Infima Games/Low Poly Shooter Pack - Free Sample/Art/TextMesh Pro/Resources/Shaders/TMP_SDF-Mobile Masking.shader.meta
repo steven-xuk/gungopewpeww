@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f7d66e0671db14cd89863036fbe2613d
+timeCreated: 1463704911
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 144839
+  packageName: Low Poly Shooter Pack - Free Sample
+  packageVersion: 2.0.0
+  assetPath: Assets/Infima Games/Low Poly Shooter Pack - Free Sample/Art/TextMesh
+    Pro/Resources/Shaders/TMP_SDF-Mobile Masking.shader
+  uploadId: 469425
