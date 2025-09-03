@@ -3,8 +3,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public Transform firePoint;
-    public bool canShoot = true;
-    public ParticleSystem muzzleFlash;
+
     public GameObject hitEffect;
 
     [SerializeField] float explosionForce = 10;
@@ -22,7 +21,7 @@ public class Shooter : MonoBehaviour
                            (triggerAxis != null && triggerAxis.ReadValue() >= 0.5f);
 
         // Shooting
-        if (triggerHeld && canShoot)
+        if (triggerHeld)
         {
             Shoot();
         }
@@ -31,16 +30,14 @@ public class Shooter : MonoBehaviour
     public void Shoot()
     {
         RaycastHit hitInfo;
-        canShoot = false;
-        muzzleFlash.Play(true);
         bool hit = Physics.Raycast(firePoint.position, firePoint.forward, out hitInfo);
         if (hit)
         {
             Debug.Log(hitInfo.collider.gameObject.name);
             ExplodeNonAlloc(hitInfo.point);
             Instantiate(hitEffect, hitInfo.point, hitEffect.transform.rotation);
+            Destroy(hitEffect, 5);
         }
-        Invoke("EnableShooting", 0.5f);
     }
 
     void ExplodeNonAlloc(Vector3 position)
@@ -57,10 +54,5 @@ public class Shooter : MonoBehaviour
                 }
             }
         }
-    }
-
-    void EnableShooting()
-    {
-        canShoot = true;
     }
 }

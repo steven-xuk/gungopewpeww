@@ -21,6 +21,7 @@ public class ECExplodingProjectile : MonoBehaviour
     public float projectileSpeedMultiplier;
 
     public bool ignorePrevRotation = false;
+    public float damage = 20f;
 
     public bool explodeOnTimer = false;
     public float explosionTimer;
@@ -91,6 +92,10 @@ public class ECExplodingProjectile : MonoBehaviour
             Instantiate(impactPrefab, pos, rot);
             if (!explodeOnTimer && Missile == false)
             {
+                if (hit.collider.gameObject.tag == "enemy")
+                {
+                    hit.collider.gameObject.GetComponent<Enemy>().DecreaseHealth(damage);
+                }
                 Destroy(gameObject);
             }
             else if (Missile == true)

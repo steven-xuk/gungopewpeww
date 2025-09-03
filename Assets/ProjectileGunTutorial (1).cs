@@ -8,6 +8,7 @@ public class ProjectileGunTutorial : MonoBehaviour
 
     //bullet force
     public float shootForce, upwardForce;
+    public AudioSource gunShootSound;
 
     //Gun stats
     public float timeBetweenShooting, spread, reloadTime, timeBetweenShots;
@@ -102,6 +103,8 @@ public class ProjectileGunTutorial : MonoBehaviour
         Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
         rb.AddForce(directionWithSpread * shootForce, ForceMode.Impulse);
         rb.AddForce(up * upwardForce, ForceMode.Impulse); // use gun's up, not camera
+
+        gunShootSound.Play(0);
 
         //Instantiate muzzle flash, if you have one
         if (muzzleFlash != null)
