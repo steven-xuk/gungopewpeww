@@ -13,6 +13,8 @@ public class openingdoor : MonoBehaviour
     // Duration of smooth rotation
     public float smoothDuration = 1f;
 
+    public bool isLocked;
+
     // Audio that plays first; door waits for it to finish before opening.
     public AudioSource preOpenAudio; // non-loop, e.g. latch / beep
     // Audio that plays while the door is moving; starts with movement and stops when done.
@@ -30,16 +32,20 @@ public class openingdoor : MonoBehaviour
         if (rotationAxis == Vector3.zero) rotationAxis = Vector3.up; // safety
         _endRot = _startRot * Quaternion.AngleAxis(angle, rotationAxis.normalized);
 
-        // If we have a pre-open audio clip, play it now. Rotation will begin after it finishes.
-        if (preOpenAudio != null && preOpenAudio.clip != null)
+        if (isLocked == false)
         {
-            preOpenAudio.Play();
+            // If we have a pre-open audio clip, play it now. Rotation will begin after it finishes.
+            if (preOpenAudio != null && preOpenAudio.clip != null)
+            {
+                preOpenAudio.Play();
+            }
+            else
+            {
+                // Fall back to using delaySeconds if no pre-open audio.
+                _timer = 0f;
+            }
         }
-        else
-        {
-            // Fall back to using delaySeconds if no pre-open audio.
-            _timer = 0f;
-        }
+
     }
 
     void Update()

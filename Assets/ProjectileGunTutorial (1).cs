@@ -73,7 +73,7 @@ public class ProjectileGunTutorial : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft <= 0) Reload();
 
         // Shooting
-        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
+        if (!(readyToShoot && shooting && !reloading && bulletsLeft > 0))
         {
             // Set bullets shot to 0
             bulletsShot = 0;
