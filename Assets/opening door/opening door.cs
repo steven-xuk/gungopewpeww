@@ -29,7 +29,6 @@ public class openingdoor : MonoBehaviour
     void Start()
     {
         _startRot = transform.localRotation;
-        if (rotationAxis == Vector3.zero) rotationAxis = Vector3.up; // safety
         _endRot = _startRot * Quaternion.AngleAxis(angle, rotationAxis.normalized);
 
         if (isLocked == false)
