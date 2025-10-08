@@ -37,7 +37,7 @@ Material:
     m_Floats:
     - _BumpScale: 0.02
     m_Colors:
-    - _Color: {r: 0.7647059, g: 0.7610608, b: 0.75908303, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2577268534314729050

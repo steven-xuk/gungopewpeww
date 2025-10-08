@@ -9896,6 +9896,7 @@ MonoBehaviour:
   damage: 20
   explodeOnTimer: 0
   explosionTimer: 0
+  isEnemyBullet: 1
 --- !u!54 &54212628334827884
 Rigidbody:
   m_ObjectHideFlags: 0

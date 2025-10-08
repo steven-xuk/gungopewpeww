@@ -25,6 +25,9 @@ public class ECExplodingProjectile : MonoBehaviour
 
     public bool explodeOnTimer = false;
     public float explosionTimer;
+
+    public bool isEnemyBullet;
+
     float timer;
 
     private Vector3 previousPosition;
@@ -96,6 +99,12 @@ public class ECExplodingProjectile : MonoBehaviour
                 {
                     hit.collider.gameObject.GetComponent<Enemy>().DecreaseHealth(damage);
                 }
+
+                if (hit.collider.gameObject.tag == "MainCamera" && isEnemyBullet)
+                {
+                    hit.collider.gameObject.GetComponent<Health>().DecreaseHealth(damage);
+                }
+
                 Destroy(gameObject);
             }
             else if (Missile == true)

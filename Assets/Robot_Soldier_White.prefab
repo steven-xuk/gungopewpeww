@@ -461,6 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8333468721987829718}
   - component: {fileID: 2123455965453701514}
+  - component: {fileID: 8260542775420589042}
   m_Layer: 0
   m_Name: Robot_Soldier_Legs2
   m_TagString: Untagged
@@ -546,6 +547,28 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000029802322, y: -0.48939458, z: 0.027195513}
     m_Extent: {x: 0.34249863, y: 0.14283535, z: 0.13258111}
   m_DirtyAABB: 0
+--- !u!64 &8260542775420589042
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950005989314918622}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1113446048337620837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,8 +1061,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889632253269043923}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.443, y: 0.386, z: 0.22}
+  m_LocalRotation: {x: -0, y: -0.3051787, z: -0, w: 0.9522951}
+  m_LocalPosition: {x: -0.016, y: 1.295, z: 1.126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1437,6 +1460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6692919422451620332}
   - component: {fileID: 3309796569555786252}
+  - component: {fileID: 5604732774734539351}
   m_Layer: 0
   m_Name: Robot_Soldier_Feet
   m_TagString: Untagged
@@ -1521,6 +1545,28 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.23591806, y: -0.37978595, z: 0.04643993}
     m_Extent: {x: 0.3364321, y: 0.13118231, z: 0.20258844}
   m_DirtyAABB: 0
+--- !u!64 &5604732774734539351
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932140991234827268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2988640737984953857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 632378731302526999}
   - component: {fileID: 9029376324174711516}
+  - component: {fileID: 7247250675486128994}
   m_Layer: 0
   m_Name: Robot_Soldier_Arms1
   m_TagString: Untagged
@@ -1908,6 +1955,28 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000071525574, y: -0.16092972, z: 0.02746769}
     m_Extent: {x: 1.0661209, y: 0.32778788, z: 0.11624505}
   m_DirtyAABB: 0
+--- !u!64 &7247250675486128994
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465781313633783791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &3506441194766792960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,10 +3104,11 @@ MonoBehaviour:
   eyesPosition: {fileID: 8390506780867741957}
   eyesPosition2: {fileID: 4281335971248325352}
   eyesPosition3: {fileID: 5241669111092539701}
-  bullet: {fileID: 1238843893459588, guid: 9e80e89bac104d14f9a55cf85b640e28, type: 3}
+  bullet: {fileID: 1796749963149706, guid: 2fa2d7455fc1db84e9c6ec4494aed9f3, type: 3}
   attackPoint: {fileID: 536392494568256567}
   animator: {fileID: 8126644218011505052}
   turnSpeed: 6.7
+  shootForce: 67000
   canSee: 0
   couldSee: 0
   isGoodRotation: 0
@@ -3853,6 +3923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 61650962721929876}
   - component: {fileID: 2479505060343534507}
+  - component: {fileID: 2108069468102184416}
   m_Layer: 0
   m_Name: Robot_Soldier_Arms2
   m_TagString: Untagged
@@ -3942,6 +4013,28 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000004172325, y: -0.035004884, z: -0.008455519}
     m_Extent: {x: 0.97280306, y: 0.3261778, z: 0.10948151}
   m_DirtyAABB: 0
+--- !u!64 &2108069468102184416
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274015498844616223}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &7390415904288898974
 GameObject:
   m_ObjectHideFlags: 0
@@ -4207,6 +4300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7570291674090000060}
   - component: {fileID: 7164376782333864076}
+  - component: {fileID: 5928189504349310148}
   m_Layer: 0
   m_Name: Robot_Soldier_Head
   m_TagString: Untagged
@@ -4288,6 +4382,28 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.27933443, z: -0.0129728615}
     m_Extent: {x: 0.17133708, y: 0.18852746, z: 0.16667478}
   m_DirtyAABB: 0
+--- !u!64 &5928189504349310148
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725102890106856789}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &7743834042420701035
 GameObject:
   m_ObjectHideFlags: 0
@@ -5001,6 +5117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 228016443762281082}
   - component: {fileID: 743788831934078348}
+  - component: {fileID: 6863426621063229131}
   m_Layer: 0
   m_Name: Robot_Soldier_Body
   m_TagString: Untagged
@@ -5090,6 +5207,28 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00000010430813, y: -0.13416517, z: -0.022130996}
     m_Extent: {x: 0.35344887, y: 0.71062744, z: 0.23256883}
   m_DirtyAABB: 0
+--- !u!64 &6863426621063229131
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986223649805759124}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &9015733600289523401
 GameObject:
   m_ObjectHideFlags: 0
