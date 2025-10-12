@@ -20,6 +20,7 @@ public class ProjectileGunTutorial : MonoBehaviour
     //Recoil
     public Rigidbody playerRb;
     public float recoilForce;
+    public bool isHolding;
 
     //bools
     bool shooting, readyToShoot, reloading;
@@ -41,6 +42,11 @@ public class ProjectileGunTutorial : MonoBehaviour
         //make sure magazine is full
         bulletsLeft = magazineSize;
         readyToShoot = true;
+    }
+
+    public void SetHold(bool value)
+    {
+        isHolding = value;
     }
 
     private void Update()
@@ -73,7 +79,7 @@ public class ProjectileGunTutorial : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft <= 0) Reload();
 
         // Shooting
-        if ((readyToShoot && shooting && !reloading && bulletsLeft > 0))
+        if ((readyToShoot && shooting && !reloading && bulletsLeft > 0) && isHolding)
         {
             // Set bullets shot to 0
             bulletsShot = 0;
