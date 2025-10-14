@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/REAL LEVELS/Level 1.unity
     guid: f2491e78d75dfbd48b8645b0ef1c05e3
   - enabled: 1
+    path: Assets/Scenes/REAL LEVELS/Menu.unity
+    guid: d9d8b4c058b054215b2e4d681a379611
+  - enabled: 1
     path: Assets/Scenes/REAL LEVELS/level 1 with actually good lightiing.unity
     guid: e1de7bfc962364c8498be8a50531919b
   - enabled: 1
