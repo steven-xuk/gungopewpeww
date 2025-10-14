@@ -23,4 +23,9 @@ public class Exit : MonoBehaviour
         }
         Debug.Log("sdafasd");
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
