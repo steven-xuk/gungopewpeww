@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public bool couldSee = false;
     public bool isGoodRotation = false;
     public bool canShoot = true;
+    public bool hasSeen = false;
 
     public float health;
 
@@ -47,7 +48,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = targetPosition.position;
+        if (hasSeen)
+        {
+            Debug.Log("a");
+            agent.destination = targetPosition.position;
+        }
 
         if (health <= 0f)
         {
@@ -58,6 +63,17 @@ public class Enemy : MonoBehaviour
 
         }
 
+        if (!hasSeen)
+        {
+            RaycastHit hit;
+            Vector3 direction = (targetPosition.transform.position - eyesPosition.transform.position).normalized;
+            if (Physics.Raycast(eyesPosition.position, direction, out hit, 100.0f)) {
+                if (hit.collider.gameObject.name == "Main Camera")
+                {
+                    hasSeen = true;
+                }
+            }
+        }
         
 
         if (couldSee == false)
@@ -158,7 +174,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("shooting");
         GameObject shotBullet = Instantiate(bullet, attackPoint.position, Quaternion.LookRotation(direction));
         shotBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce * Time.deltaTime);
-        Invoke(nameof(Reload), 1);
+        Invoke(nameof(Reload), 0.5f);
     }
 
     void Reload()
