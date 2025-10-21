@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     public bool canShoot = true;
     public bool hasSeen = false;
 
+    public float shootDelay = 0.67f;
+
     public float health;
 
     public Rigidbody[] rigidbodies = new Rigidbody[13];
@@ -50,7 +52,6 @@ public class Enemy : MonoBehaviour
     {
         if (hasSeen)
         {
-            Debug.Log("a");
             agent.destination = targetPosition.position;
         }
 
@@ -167,14 +168,14 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
     }
+
     void Shoot()
     {
         Vector3 direction = (targetPosition.transform.position - eyesPosition.transform.position).normalized;
         canShoot = false;
-        Debug.Log("shooting");
         GameObject shotBullet = Instantiate(bullet, attackPoint.position, Quaternion.LookRotation(direction));
         shotBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce * Time.deltaTime);
-        Invoke(nameof(Reload), 0.5f);
+        Invoke(nameof(Reload), shootDelay);
     }
 
     void Reload()

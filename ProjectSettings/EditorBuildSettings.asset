@@ -26,18 +26,24 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/REAL LEVELS/Level 1.unity
     guid: f2491e78d75dfbd48b8645b0ef1c05e3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/REAL LEVELS/Menu.unity
     guid: d9d8b4c058b054215b2e4d681a379611
   - enabled: 1
     path: Assets/Scenes/REAL LEVELS/level1.unity
     guid: e1de7bfc962364c8498be8a50531919b
   - enabled: 1
-    path: Assets/Scenes/REAL LEVELS/level 2 with good lighting.unity
-    guid: ec12096d569db4039b26189cdedcf3a5
-  - enabled: 0
     path: Assets/Scenes/REAL LEVELS/Level 2.unity
     guid: 05c8ec9f618400c42bee9cb0817c6005
+  - enabled: 1
+    path: Assets/Scenes/REAL LEVELS/lrevel3.unity
+    guid: ec12096d569db4039b26189cdedcf3a5
+  - enabled: 1
+    path: Assets/Scenes/REAL LEVELS/level4.unity
+    guid: 99d91736fd9824550aa0c74417cd4284
+  - enabled: 1
+    path: Assets/Scenes/REAL LEVELS/Menu 1.unity
+    guid: 5540e73647e174f12be5a6840009836c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
