@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9ca22510633fbfd4399f1704cd9d5c72, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2099,7 +2099,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1463119885}
+  m_Mesh: {fileID: 821100171}
 --- !u!33 &478493519
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -3147,7 +3147,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 227467504}
+  m_Mesh: {fileID: 1509659525}
 --- !u!33 &632437288
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4807,6 +4807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  volume: {fileID: 0}
 --- !u!136 &911028577
 CapsuleCollider:
   m_ObjectHideFlags: 0
