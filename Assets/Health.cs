@@ -1,28 +1,43 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Health : MonoBehaviour
 {
 
     public float health;
+    public Volume volume;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Vignette vig;
+
     void Start()
     {
-        
+        if (volume.profile.TryGet<Vignette>(out Vignette vign))
+        {
+            vig = vign;
+        }
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        vig.intensity.value = 0.6f*Mathf.Clamp((1f - (health / 100)), 0, 0.777f);
+
     }
 
     public void DecreaseHealth(float damage)
     {
         health -= damage;
+    }
+
+    public void IncreaseHealth(float damage)
+    {
+        health += damage;
     }
 }
