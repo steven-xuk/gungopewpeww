@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        vig.intensity.value = 0.6f*Mathf.Clamp((1f - (health / 100)), 0, 0.777f);
+        vig.intensity.value = 0.5f*Mathf.Clamp((1f - (health / 100)), 0, 0.777f);
 
     }
 
